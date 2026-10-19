@@ -1,0 +1,85 @@
+/* Reset CSS cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Định dạng lưới chính (Grid Container) */
+.container {
+    display: grid;
+    /* Chia 2 cột: Sidebar 1 phần, Content 3 phần */
+    grid-template-columns: 1fr 3fr;
+    /* Chiều cao 3 hàng: Header auto, Content chiếm phần còn lại, Footer auto */
+    grid-template-rows: auto 1fr auto;
+    /* Sắp xếp vị trí các khu vực */
+    grid-template-areas: 
+        "header header"
+        "sidebar content"
+        "footer footer";
+    height: 100vh; /* Chiều cao bằng 100% màn hình hiển thị */
+}
+
+/* Định dạng các Grid Item */
+.header {
+    grid-area: header;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    margin-top: 15px;
+}
+
+.sidebar ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.content {
+    grid-area: content;
+    padding: 20px;
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+.content h2 {
+    margin-bottom: 15px;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Làm Responsive cho Mobile (Màn hình nhỏ hơn 768px) */
+@media (max-width: 768px) {
+    .container {
+        /* Chuyển thành 1 cột duy nhất */
+        grid-template-columns: 1fr;
+        /* Chia thành 4 hàng tương ứng với 4 phần */
+        grid-template-rows: auto auto 1fr auto;
+        /* Sắp xếp lại bố cục theo chiều dọc */
+        grid-template-areas: 
+            "header"
+            "sidebar"
+            "content"
+            "footer";
+    }
+}
